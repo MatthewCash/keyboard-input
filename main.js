@@ -3,7 +3,7 @@ const axios = require("axios");
 const { keyEvents } = require('./keyboardInput');
 
 const setColor = async color => {
-    axios.post("http://epsilon.zero:1729/color", {
+    axios.post(process.env.LIGHTING_URL + "/color", {
         color
     });
 };
@@ -12,7 +12,7 @@ keyEvents.on("key", keyCode => {
     switch (keyCode) {
 	// Scene Toggle
 	case 458796: { // SPACE
-	    axios.post("http://epsilon.zero:3000", {
+	    axios.post(process.env.DEVICES_URL, {
 		setScene: null
 	    });
 	    break;
@@ -56,44 +56,44 @@ keyEvents.on("key", keyCode => {
             break;
         }
         case 458850: { // NUM 0
-            axios.post("http://epsilon.zero:1729/white", {
+            axios.post(process.env.LIGHTING_URL + "/white", {
                 cold: false
             });
             break;
         }
         case 458851: { // NUM .
-            axios.post("http://epsilon.zero:1729/white", {
+            axios.post(process.env.LIGHTING_URL + "/white", {
                 cold: true
             });
             break;
         }
         case 458837: { // NUM *
-            axios.post("http://epsilon.zero:1729/cycle", {
+            axios.post(process.env.LIGHTING_URL + "/cycle", {
                 cycle: true
             });
             break;
         }
         case 458836: { // NUM /
-            axios.post("http://epsilon.zero:1729/cycle", {
+            axios.post(process.env.LIGHTING_URL + "/cycle", {
                 cycle: false
             });
             break;
         }
         case 458840: { // NUM ENTER
-            axios.post("http://epsilon.zero:1729/power", {
+            axios.post(process.env.LIGHTING_URL + "/power", {
                 power: false
             });
             break;
         }
         case 458838: { // NUM -
-            axios.post("http://epsilon.zero:1729/brightness", {
+            axios.post(process.env.LIGHTING_URL + "/brightness", {
                 brightness: -25,
                 adjust: true
             });
             break;
         }
         case 458839: { // NUM +
-            axios.post("http://epsilon.zero:1729/brightness", {
+            axios.post(process.env.LIGHTING_URL + "/brightness", {
                 brightness: 25,
                 adjust: true
             });
